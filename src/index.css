@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: #e7e7ea;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(0, 113, 227, 0.18);
+}
+
+a {
+  color: #0071e3;
+  text-decoration: none;
+}
+a:hover {
+  color: #0077ed;
+  text-decoration: underline;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes ring-in {
+  from {
+    stroke-dashoffset: 339.3;
+  }
+}
+
+@keyframes spec-sweep {
+  0% {
+    transform: translateX(-120%) rotate(20deg);
+  }
+  100% {
+    transform: translateX(120%) rotate(20deg);
+  }
+}
+.specular-btn {
+  position: relative;
+  overflow: hidden;
+}
+.specular-btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -30%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-120%) rotate(20deg);
+  pointer-events: none;
+}
+.specular-btn:hover::after {
+  animation: spec-sweep 1.1s ease forwards;
+}
+
+.fpill {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fpill::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 140%;
+  padding-top: 140%;
+  border-radius: 50%;
+  background: #0071e3;
+  transform: translate(-50%, 100%) scale(0.6);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+.fpill:hover::before {
+  transform: translate(-50%, 40%) scale(1);
+}
+.fpill-label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.35s ease;
+}
+.fpill:hover .fpill-label {
+  color: #fff;
+}
+
+.dock-item {
+  position: relative;
+}
+.dock-tip {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1d1d1f;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.dock-item:hover .dock-tip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.dock-item:hover {
+  transform: translateY(-6px) scale(1.12) !important;
+}
+
+@keyframes link-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes radio-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 113, 227, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0);
+  }
+}
+
+.animate-link-pop {
+  animation: link-pop 0.4s ease;
+}
+
+.animate-radio-pulse {
+  animation: radio-pulse 0.7s forwards;
+}
+
+.hover-lift {
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.25s ease-out;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+.hover-lift-shadow-blue:hover {
+  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+}
+.hover-lift-shadow-dark:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+}
+.hover-lift-shadow-neutral:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.hover-lift-shadow-soft:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
